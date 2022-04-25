@@ -79,6 +79,6 @@ class MenuListActivity : AppCompatActivity() {
     }
 
     companion object{
-        const val TAG = "FeedFragment"
+        const val TAG = "MenuListActitiy"
     }
 }

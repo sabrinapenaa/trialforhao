@@ -23,16 +23,15 @@ class SignInActivity : AppCompatActivity() {
     private fun goToRestaurantPage() {
         val intent = Intent(this@SignInActivity, RestaurantActivity::class.java)
         startActivity(intent)
-        finish() //close out login activity
     }
 
     private fun goToCustomerPage() {
-        val intent = Intent(this@SignInActivity, MenuListActivity::class.java)
+        val intent = Intent(this@SignInActivity, MainActivity::class.java)
         startActivity(intent)
-        finish() //close out login activity
+
     }
     companion object{
-        const val TAG = "RestaurantActivity"
+        const val TAG = "SigninActivity"
         val REQUEST_CODE = 10
 
     }

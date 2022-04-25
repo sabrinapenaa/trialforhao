@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         monitoringButton = findViewById<Button>(R.id.monitoringButton)
         beaconListView = findViewById<ListView>(R.id.beaconList)
         beaconCountTextView = findViewById<TextView>(R.id.beaconCount)
-        beaconCountTextView.text = "No beacons detected"
+        beaconCountTextView.text = "No Menus detected"
         beaconListView.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayOf("--"))
     }
 
@@ -57,11 +57,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     val monitoringObserver = Observer<Int> { state ->
-        var dialogTitle = "Beacons detected"
+        var dialogTitle = "Menus detected"
         var dialogMessage = "didEnterRegionEvent has fired"
         var stateString = "inside"
         if (state == MonitorNotifier.OUTSIDE) {
-            dialogTitle = "No beacons detected"
+            dialogTitle = "No Menus detected"
             dialogMessage = "didExitRegionEvent has fired"
             stateString == "outside"
             beaconCountTextView.text = "Outside of the beacon region -- no beacons detected"
