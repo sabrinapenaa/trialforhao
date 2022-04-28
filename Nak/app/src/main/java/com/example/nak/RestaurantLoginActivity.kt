@@ -23,7 +23,7 @@ class RestaurantLoginActivity : AppCompatActivity() {
         //If they are, take them to mainActivity
 
         if(ParseUser.getCurrentUser() != null){
-            goToMainActivity()
+            goToRestaurantActivity()
             //goToTrialActivity()
         }
         //else they must login
@@ -79,16 +79,16 @@ class RestaurantLoginActivity : AppCompatActivity() {
             if (user != null) {
                 // Hooray!  The user is logged in.
                 Log.i(TAG, "Successfully logged in user")
-                goToMainActivity()
+                goToRestaurantActivity()
                 //goToTrialActivity()
             } else {
                 // Signup failed.  Look at the ParseException to see what happened.
                 e.printStackTrace()
-                Toast.makeText(this, "Error logging in", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Error logging in. Please make sure you have an existing account", Toast.LENGTH_SHORT).show()
             }})
         )
     }
-    private fun goToMainActivity(){
+    private fun goToRestaurantActivity(){
         val intent = Intent(this@RestaurantLoginActivity, RestaurantActivity::class.java)
         startActivity(intent)
         finish() //close out login activity
