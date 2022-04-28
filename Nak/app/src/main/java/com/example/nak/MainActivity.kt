@@ -69,6 +69,7 @@ class MainActivity : AppCompatActivity() {
         }
         else {
             beaconCountTextView.text = "Inside the beacon region."
+
         }
         Log.d(TAG, "monitoring state changed to : $stateString")
         val builder =

@@ -21,7 +21,7 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun goToRestaurantPage() {
-        val intent = Intent(this@SignInActivity, RestaurantActivity::class.java)
+        val intent = Intent(this@SignInActivity, RestaurantLoginActivity::class.java)
         startActivity(intent)
     }
 

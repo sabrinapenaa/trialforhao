@@ -21,18 +21,20 @@ class RestaurantActivity : AppCompatActivity() {
             //Get the description that they have inputted
             val description = findViewById<EditText>(R.id.etMenuDesc).text.toString()
             val menuItem  = findViewById<EditText>(R.id.etItemName).text.toString()
-            //val user = ParseUser.getCurrentUser()
+            val user = ParseUser.getCurrentUser()
 
-                submitPost(description,menuItem)
+            submitPost(description,menuItem,user)
+            findViewById<EditText>(R.id.etMenuDesc).text.clear()
+            findViewById<EditText>(R.id.etItemName).text.clear()
 
             }
         }
-    private fun submitPost(description: String, itemName : String) {
+    private fun submitPost(description: String, itemName : String, user: ParseUser) {
         //Createhe post object
         val post = MenuItems()
         post.setDescription(description)
         post.setMenuItem(itemName)
-
+        post.setUser(user)
         post.saveInBackground { exception ->
             if(exception != null){
                 Log.e(MainActivity.TAG, "Error while saving post")

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.parse.FindCallback
 import com.parse.ParseException
 import com.parse.ParseQuery
+import com.parse.ParseUser
 
 class MenuListActivity : AppCompatActivity() {
     //lateinit var swipeContainer : SwipeRefreshLayout
@@ -53,6 +54,7 @@ class MenuListActivity : AppCompatActivity() {
         // Specify the object id
         query.include(MenuItems.KEY_USER)
         query.addDescendingOrder("createdAt")
+       query.whereEqualTo(MenuItems.KEY_USER, ParseUser.getCurrentUser())
         //Only return the current most 20 posts
 
         query.findInBackground( object: FindCallback<MenuItems> {
