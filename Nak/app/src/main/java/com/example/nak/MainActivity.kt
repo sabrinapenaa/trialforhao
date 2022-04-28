@@ -17,6 +17,8 @@ import org.altbeacon.beacon.Beacon
 import org.altbeacon.beacon.BeaconManager
 import org.altbeacon.beacon.MonitorNotifier
 import android.bluetooth.BluetoothAdapter
+import android.content.Intent
+import com.parse.Parse
 
 class MainActivity : AppCompatActivity() {
     lateinit var beaconListView: ListView
@@ -81,11 +83,20 @@ class MainActivity : AppCompatActivity() {
         alertDialog = builder.create()
         alertDialog?.show()
     }
-
+    private fun goToMenuActivity() {
+        val intent = Intent(this@MainActivity, MenuListActivity::class.java)
+        startActivity(intent)
+        //close out login activity
+    }
     val rangingObserver = Observer<Collection<Beacon>> { beacons ->
         Log.d(TAG, "Ranged: ${beacons.count()} beacons")
         if (BeaconManager.getInstanceForApplication(this).rangedRegions.size > 0) {
+
             beaconCountTextView.text = "Ranging enabled: ${beacons.count()} beacon(s) detected"
+            if(beacons.isNotEmpty())
+            {
+                goToMenuActivity()
+            }
             beaconListView.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1,
                 beacons
                     .sortedBy { it.distance }
